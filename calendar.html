@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Room Reservations</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="main.css">
+  </head>
+
+  <body>
+    <div class="site-header" role="banner">
+      <div class="page-top">
+        <div class="row">
+          <div class="page-top-left">
+            <a class="campus-secondary" href="https://www.ucsc.edu/index.html" id="logo">UC Santa Cruz</a>
+          </div>
+          <div class="page-top-right">
+            <ul id="topNav">
+              <li><a href="https://my.ucsc.edu" title="The student portal">MyUCSC</a></li>
+              <li><a href="https://www.ucsc.edu/tools/people.html" title="Campus directory">People</a></li>
+              <li><a href="https://www.ucsc.edu/tools/calendars.html" title="Upcoming events, academic, and administrative calendars">Calendars</a></li>
+              <li><a href="https://www.ucsc.edu/visit/maps-directions.html">Maps</a></li>
+              <li><a href="https://www.ucsc.edu/tools/azindex.html" title="A to Z index of UCSC websites">A-Z Index</a></li>
+            </ul>
+            <div class="search" role="search">
+              <!-- Google Custom Search -->
+              <form action="/search.html" id="cse-search-box-site">
+              <div><label class="hide" for="search-site">Search</label> <input class="query" id="search-site" name="q" placeholder="Search this Site" type="text"> <input class="srchBtn" type="submit"></div>
+              </form>
+              <!-- end Google Custom Search -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row breadcrumbs">
+        <p>
+          <a href="https://stevenson.ucsc.edu/index.html">Home</a> 
+          / 
+          <a href="https://stevenson.ucsc.edu/activities/index.html">Activities</a> 
+          / 
+          <a href="index.html">Josh Alper Marines Music Room</a>
+          / Room Reservations
+        </p>
+      </div>
+
+      <div class="main-header">
+        <div class="row names">
+          <div class="secondary-name">
+            <!-- Add the title attribute e.g. title="Website Home" -->
+            <p><a href="../index.html">Stevenson College</a></p>
+            <a class="mobile-menu" href="#mainNav"></a>
+          </div>
+        </div>
+
+        <div class="row main-navigation" role="navigation">
+          <ul class="hasqsg" id="mainNav">
+            <li class="first"><a href="../about/index.html">About</a></li>
+            <li><a href="../academics/index.html">Academics</a></li>
+            <li><a href="../residential-life/index.html">Housing &amp; Residential Life</a></li>
+            <li><a href="index.html">Activities</a></li>
+            <li><a href="../advising/index.html">Advising</a></li>
+            <li class="last qsg"><a href="../alumni-family/alumni/index.html">Alumni &amp; Family</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div class="container" id="calendar">
+      <div class="row">
+        <div class="col-1 button calbutton" id="calmonth-prev">&lt</div>
+        <div class="col calendar-date" id="monthOf"><!-- js populated --></div>
+        <div class="col-1 button calbutton" id="calmonth-next">&gt</div>
+      </div>
+      <div class="row" id="calendar-days">
+        <div class="col">Su</div>
+        <div class="col">Mo</div>
+        <div class="col">Tu</div>
+        <div class="col">We</div>
+        <div class="col">Th</div>
+        <div class="col">Fr</div>
+        <div class="col">Sa</div>
+      </div>
+      <!--
+      <div class="row week" id="week0">
+      </div>
+      <div class="row week" id="week1">
+      </div>
+      <div class="row week" id="week2">
+      </div>
+      <div class="row week" id="week3">
+      </div>
+      <div class="row week" id="week4">
+      </div>
+      -->
+      <!-- ^^ js populated above ^^-->
+      <span id="populateAbove"></span>
+    </div>
+
+    <div id="mySidenav" class="sidenav">
+      <div class="container-fixed">
+
+        <div class="row align-items-start">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <div class="centered">
+            <span id="chosenDate">
+              <!-- js populated -->
+            </span>
+          </div>
+        </div>
+
+        <div class="align-items-center" id="radio-buttons">
+          <label class="container-radio">1 - 3:30pm
+            <input class="customRadio" data="1 - 3:30pm" checked="checked" type="radio" name="radio">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container-radio">6 - 9pm
+            <input class="customRadio" data="6 - 9pm" type="radio" name="radio">
+            <span class="checkmark"></span>
+          </label>
+
+          <!-- 
+          <form method="post" action="#">
+            <div class="radio row">
+              <div class="col"><input type="radio" name="radOne" id="radOne" value="1st"></div>
+              <div class="col bigtext"><label for="radOne">1 - 3:30pm</label></div>
+            </div>
+
+            <div class="radio row">
+              <div class="col"><input type="radio" name="radTwo" id="radTwo" value="2nd"></div>
+              <div class="col bigtext"><label for="radTwo">6 - 9pm</label></div>
+              
+            </div>
+            <div class="container-fluid"> 
+              <a class="1st hideme" href="#">Reserve 1 - 3:30pm</a>
+              <a class="2nd hideme" href="#">Reserve 6 - 9pm</a>
+            </div>
+          </form>
+          -->
+        </div>
+        <div class="align-items-end">
+          <button type="button" id="makeReservation" class="btn btn-primary" data-toggle="modal" data-target="#regsModalCenter">
+            Reserve
+          </button>
+        </div>
+
+      </div>
+      
+      <div class="container-fill" style="padding-bottom: 0.3em;">
+        <span class="bigtext">My Reservations</span>
+      </div>
+
+      <div class="sidebar-bottom container-fill" id="sidenavEnd">
+        <div class="list-group list-group-flush container-fluid" id="myReservationList">
+          <!-- js populated -->
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="regsModalCenter" tabindex="-1" role="dialog" aria-labelledby="regsModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="centered">Please read all Regulations</span>
+          </div>
+
+          <div class="modal-body" id="modal-body">
+            <div class="list-group list-group-flush" id="modal-list-group">
+              <li class="list-group-item">Recurring reservations are no longer available.</li>
+
+              <li class="list-group-item">The student who reserves the space is responsible and accountable for ensuring appropriate use of the facility.</li>
+
+              <li class="list-group-item">If your reservation is confirmed, you will be directed as to when and where to meet a staff member or collect a key to open the space.</li>
+              
+              <li class="list-group-item">You will need to provide the staff person with a student ID card or driver's license to hold while you are using the space.</li>
+              
+              <li class="list-group-item">Be ready to leave on time.</li>
+              
+              <li class="list-group-item">To ensure security do not leave the space unattended while the door is unlocked.</li>
+              
+              <li class="list-group-item">This space is intended for use by Stevenson students to practice music/performance that would otherwise be disruptive in the residence halls due to noise levels.</li>
+              
+              <li class="list-group-item">Though this separate enclosed space is helpful in reducing noise impact to others, it is possible that noise complaints may happen.  If a student or staff person asks you to reduce volume, please do so immediately or stop using the space.</li>
+              
+              <li class="list-group-item">At this time, we are not able to offer instrument storage.</li>
+              
+              <li class="list-group-item">The practice space currently has the following equipment (although this listing is not a guarantee of availability): drum kit; Yamaha YPT-230 keyboard; Drive bass amp; Johnson guitar amp; two microphones; Phonic 410 100w powered mixer; two monitors.</li>
+              
+              <li class="list-group-item">University, college, and housing rules apply. Violations will be subject to standard sanctions in addition to loss of privileges for the practice space.</li>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" data-dismiss="modal" id="IUnderstand-btn" class="btn btn-primary" onclick="addReservation()" type="submit" aria-hidden="true" disabled>I Understand</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="editModalCenter" tabindex="-1" role="dialog" aria-labelledby="editModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="centered" id="editReservationTitle">My reservation</span>
+          </div>
+
+          <div class="modal-body" id="modal-body">
+            <div class="list-group list-group-flush">
+              <li class="list-group-item">
+                Pick up the key from the Stevenson College Office (across from the Coffee House). Enjoy the room!
+              </li>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" data-dismiss="modal" id="deleteReservation" class="btn btn-primary" onclick="removeReservation()" type="submit">Cancel Reservation</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div class="main-footer">
+      <div class="row" id="footer">
+        <div class="footer-left">
+          <img alt="University of California" class="seal" height="84" src="https://static.ucsc.edu/_responsive/images/logos/uc-seal.svg" width="84">
+          <div class="address home">
+            <div class="location">UC Santa Cruz, 1156 High Street, Santa Cruz, Ca 95064</div>
+            <div class="copyright">©2019 Regents of the University of California. All Rights Reserved.</div>
+          </div>
+        </div>
+
+        <div class="footer-right">
+          <div class="social-media">
+            <a href="https://www.facebook.com/StevensonUCSC/"><svg aria-label="Follow us on Facebook" class="svg-inline--fa fa-facebook-f fa-w-9" aria-hidden="true" data-prefix="fab" data-icon="facebook-f" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 512" data-fa-i2svg=""><path fill="currentColor" d="M76.7 512V283H0v-91h76.7v-71.7C76.7 42.4 124.3 0 193.8 0c33.3 0 61.9 2.5 70.2 3.6V85h-48.2c-37.8 0-45.1 18-45.1 44.3V192H256l-11.7 91h-73.6v229"></path></svg><!-- <i aria-label="Follow us on Facebook" class="fab fa-facebook-f"></i> --></a>
+            <a href=" https://www.instagram.com/stevensonucsc/"><svg aria-label="Follow us on Instagram" class="svg-inline--fa fa-instagram fa-w-14" aria-hidden="true" data-prefix="fab" data-icon="instagram" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg><!-- <i aria-label="Follow us on Instagram" class="fab fa-instagram"></i> --></a>
+            <a href="https://www.youtube.com/channel/UCIOYdc8y8sXO7JNwOfzmWkQ"><svg aria-label="Follow us on YouTube" class="svg-inline--fa fa-youtube fa-w-18" aria-hidden="true" data-prefix="fab" data-icon="youtube" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg><!-- <i aria-label="Follow us on YouTube" class="fab fa-youtube"></i> --></a>
+          </div>
+
+          <div class="links"> 
+            <a href="https://secure.ucsc.edu/s/1069/index.aspx?sid=1069&amp;gid=1&amp;pgid=761&amp;cid=1722">Make a Gift</a>  
+            <a href="https://stevenson.ucsc.edu/feedback.php">Feedback</a> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
